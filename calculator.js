@@ -6,60 +6,73 @@
  * @return {object} `calculator` object that can be used
  */
 
-
+var calculatorModule = (function() {
+  var memory = 0;
+  var total = 0;
   /**
    * sets the `total` to the number passed in
    * @param  { Number } x
    * @return { Number }    current total
    */
+  function _load(x){
+    total = x;
+    return total;
+  }
 
+function _getTotal(){
+  return total;
+}
 
-  /**
-   * Return the value of `total`
-   * @return { Number }
-   */
+function _add(x){
+  total = total + x;
+  return total;
+}
 
+function _subtract(x){
+  total = total - x;
+  return total;
+}
 
-  /**
-   * Sums the value passed in with `total`
-   * @param { Number } x
-   */
+function _multiply(x){
+  total = total * x;
+  return total;
+}
 
+function _divide(x){
+  total = (total / x);
+  return total;
+}
 
-  /**
-   * Subtracts the value passed in from `total`
-   * @param  { Number } x
-   */
+function _recallMemory(){
+  return memory;
+}
 
+function _saveMemory(){
+  memory = total;
+  return memory;
+}
 
-  /**
-   * Multiplies the value by `total`
-   * @param  { Number } x
-   */
-
-
-  /**
-   * Divides the value passing in by `total`
-   * @param  { Number } x
-   */
-
-
-  /**
-   * Return the value stored at `memory`
-   * @return { Number }
-   */
-
-
-  /**
-   * Stores the value of `total` to `memory`
-   */
-
-
-  /**
-   * Clear the value stored at `memory`
-   */
+function _clearMemory(){
+  memory = 0;
+  return memory;
+}
 
   /**
    * Validation
    */
+if (typeof x !== "number") {
+  console.log("Error");
+}
 
+  return {
+    load: _load,
+    getTotal: _getTotal,
+    add: _add,
+    subtract: _subtract,
+    multiply: _multiply,
+    divide: _divide,
+    recallMemory: _recallMemory,
+    saveMemory: _saveMemory,
+    clearMemory: _clearMemory
+  }
+});
